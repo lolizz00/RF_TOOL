@@ -130,8 +130,9 @@ class MeasClass(QWidget,  Ui_MeasWid):
                 m = int(table.item(i, 1).text().replace('M', ''))
                 if not m in _marks:
                     table.removeRow(i)
-            except:
+            except Exception as e:
                 pass
+                print(e)
 
 
         self.calcDelta(marks)

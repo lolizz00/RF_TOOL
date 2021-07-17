@@ -380,9 +380,12 @@ class fftWid(QWidget, A_PlotWidget):
         try:
 
             if n in self.plots:
-                self.plots[n].setData(x, y, pen=pen)
+
+                if len(x) == len(y):
+                    self.plots[n].setData(x, y, pen=pen)
             else:
                 self.plots[n] = self.plt.plot(x, y, pen=pen)
+
 
             if self.currChan != None:
                 actPlot = self.plots[self.currChan]
@@ -401,7 +404,6 @@ class fftWid(QWidget, A_PlotWidget):
                 self.data_first_sig.emit()
 
         except:
-            raise
             pass
 
 

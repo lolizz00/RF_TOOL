@@ -20,6 +20,7 @@ class A_PlotWidget:
         #self.plt =
 
 
+
         self.lt = QVBoxLayout()
         self.lt.addWidget(self.graphicsView)
         self.setLayout(self.lt)

@@ -266,6 +266,7 @@ class DataReader(QObject):
             self.stopSlot()
             txt = str(e)
             self.error_signal.emit(txt)
+            print(e)
             return
         flsPtr = [ open(fName, 'rb')  for fName in self.files ]
 

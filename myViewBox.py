@@ -18,6 +18,8 @@ class CustomViewBox(pg.ViewBox):
         self.setMouseMode(self.RectMode)
         self.setMouseMode(self.RectMode)
 
+
+
     def wheelEvent(self, ev, axis=None):
         mask = np.array(self.state['mouseEnabled'], dtype=np.float)
         if axis is not None and axis >= 0 and axis < len(mask):

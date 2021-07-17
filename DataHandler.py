@@ -36,6 +36,9 @@ class DataHandler(QObject):
 
         self.midCnt = 1
 
+
+        self.midErrSch = 0
+
         super(DataHandler, self).__init__()
 
         self.dataIn = []
@@ -156,27 +159,46 @@ class DataHandler(QObject):
         if not len(self.data[chanN]):
             self.data[chanN] = []
             self.data[chanN].append(data)
+            return data
         else:
+
             try:
-                self.data[chanN].append(data)
-
-
-                while len(self.data[chanN]) > self.midCnt:
-                    self.data[chanN].pop(0)
-
 
                 _data = self.data[chanN][0]
-                for i in range(1, len(self.data[chanN])):
-                    _data =  _data + self.data[chanN][i]
 
-                _data = _data / len(self.data[chanN])
+                if len(_data) == len(data):
 
-                data = _data
+                    self.midErrSch = 0
 
-            except:
-                pass
+                    self.data[chanN].append(data)
 
-        return data
+                    while len(self.data[chanN]) > self.midCnt:
+                        self.data[chanN].pop(0)
+
+                    for i in range(1, len(self.data[chanN])):
+                        _data = _data + self.data[chanN][i]
+
+
+                    _data = _data / len(self.data[chanN])
+
+                else:
+
+                    for i in range(1, len(self.data[chanN])):
+                        _data = _data + self.data[chanN][i]
+
+                    _data = _data / len(self.data[chanN])
+
+                    self.midErrSch = self.midErrSch + 1
+                    if self.midErrSch == 3:
+                        self.midErrSch = 0
+                        self.data[chanN] = []
+
+
+            except Exception as e:
+                self.data[chanN] = []
+
+
+        return _data
 
 
     def calcFFT(self, y, chanN):

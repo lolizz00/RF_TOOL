@@ -25,6 +25,7 @@ def win():
     import pyqtgraph as pg
     pg.setConfigOption('background', 'w')
     pg.setConfigOption('foreground', 'k')
+    pg.setConfigOption('antialias', False)
 
     os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
     QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
