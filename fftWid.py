@@ -6,6 +6,8 @@ import numpy as np
 from scipy.signal import find_peaks
 
 
+import pyqtgraph as pg
+
 class fftWid(QWidget, A_PlotWidget):
 
     update_marker_sig = pyqtSignal(int, float, float, int)
@@ -36,6 +38,8 @@ class fftWid(QWidget, A_PlotWidget):
         self.maxMarkCnt = 9
 
         self.thePeakVal = 10
+
+        self.opt = False
 
     def findNear(self, freq, chanN):
         array = np.asarray(self.currData[chanN][0])
@@ -345,6 +349,13 @@ class fftWid(QWidget, A_PlotWidget):
     def setCorrLabels(self):
         self.setLabels('БПФ', 'Уровень, dBFS', 'Частота')
 
+
+    def setOpt(self, state):
+        state = bool(state)
+        self.opt =  state
+
+
+
     def setChanN(self, n):
         self.chanN = n
         self.clear()
@@ -382,12 +393,27 @@ class fftWid(QWidget, A_PlotWidget):
             if n in self.plots:
 
                 if len(x) == len(y):
-                    self.plots[n].setData(x, y, pen=pen)
+
+                    if self.opt:
+                        self.plots[n].opts['downsampleMethod'] = 'peak'
+                        self.plots[n].opts['downsample'] = 20
+                    else:
+                        self.plots[n].opts['downsample'] = 0
+
+
+                    self.plots[n].setData(x, y)
+
+
             else:
-                self.plots[n] = self.plt.plot(x, y, pen=pen)
+                t = pg.PlotDataItem()
+                t.setData(x, y, pen=pen)
+
+                self.plt.addItem(t)
+                self.plots[n] = t
 
 
-            if self.currChan != None:
+            #if self.currChan != None:
+            if 0:
                 actPlot = self.plots[self.currChan]
                 self.plt.removeItem(actPlot)
                 self.plt.addItem(actPlot)
@@ -404,6 +430,7 @@ class fftWid(QWidget, A_PlotWidget):
                 self.data_first_sig.emit()
 
         except:
+            raise
             pass
 
 

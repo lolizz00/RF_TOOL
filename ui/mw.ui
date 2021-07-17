@@ -69,66 +69,11 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>181</width>
+         <width>191</width>
          <height>551</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_12">
-        <item row="9" column="0" colspan="3">
-         <widget class="QPushButton" name="clearSpecPushButton">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Очистить</string>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="0" colspan="3">
-         <widget class="QPushButton" name="markerPeakPushButton">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Маркер на максимум</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="2">
-         <widget class="QSpinBox" name="midSpinBox">
-          <property name="minimum">
-           <number>1</number>
-          </property>
-          <property name="singleStep">
-           <number>5</number>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QSpinBox" name="RD_cntSpinBox">
-          <property name="minimum">
-           <number>10</number>
-          </property>
-          <property name="maximum">
-           <number>999999999</number>
-          </property>
-          <property name="singleStep">
-           <number>100</number>
-          </property>
-          <property name="value">
-           <number>10000</number>
-          </property>
-          <property name="displayIntegerBase">
-           <number>10</number>
-          </property>
-         </widget>
-        </item>
         <item row="4" column="0">
          <widget class="QLabel" name="label_9">
           <property name="font">
@@ -142,8 +87,19 @@
           </property>
          </widget>
         </item>
-        <item row="11" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_6"/>
+        <item row="4" column="2">
+         <widget class="QPushButton" name="cntPushButton">
+          <property name="text">
+           <string>OK</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_33">
+          <property name="text">
+           <string>Окно:</string>
+          </property>
+         </widget>
         </item>
         <item row="2" column="1" colspan="2">
          <widget class="QComboBox" name="specWinComboBox">
@@ -184,24 +140,20 @@
           </property>
          </widget>
         </item>
-        <item row="6" column="0" colspan="2">
-         <widget class="QLabel" name="label">
+        <item row="10" column="0" colspan="3">
+         <widget class="QPushButton" name="clearSpecPushButton">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="text">
-           <string>Усреднение</string>
+           <string>Очистить</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_33">
-          <property name="text">
-           <string>Окно:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="0" colspan="3">
-         <widget class="QTableWidget" name="speclegTableWidget"/>
-        </item>
-        <item row="8" column="0" colspan="3">
+        <item row="9" column="0" colspan="3">
          <widget class="QPushButton" name="info0PushButton">
           <property name="minimumSize">
            <size>
@@ -214,15 +166,75 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="2">
-         <widget class="QPushButton" name="cntPushButton">
+        <item row="11" column="0" colspan="3">
+         <widget class="QPushButton" name="markerPeakPushButton">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
           <property name="text">
-           <string>OK</string>
+           <string>Маркер на максимум</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QSpinBox" name="RD_cntSpinBox">
+          <property name="minimum">
+           <number>10</number>
+          </property>
+          <property name="maximum">
+           <number>999999999</number>
+          </property>
+          <property name="singleStep">
+           <number>100</number>
+          </property>
+          <property name="value">
+           <number>10000</number>
+          </property>
+          <property name="displayIntegerBase">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_6"/>
+        </item>
+        <item row="7" column="0" colspan="2">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Усреднение</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0" colspan="3">
+         <widget class="QTableWidget" name="speclegTableWidget"/>
+        </item>
+        <item row="7" column="2">
+         <widget class="QSpinBox" name="midSpinBox">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="singleStep">
+           <number>5</number>
           </property>
          </widget>
         </item>
         <item row="5" column="0" colspan="2">
          <widget class="QComboBox" name="pow2ComboBox"/>
+        </item>
+        <item row="6" column="0" colspan="3">
+         <widget class="QCheckBox" name="opt_checkBox">
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Оптимизация (Auto DownSample)</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -266,12 +278,12 @@
       <property name="title">
        <string>Управление</string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>31</x>
          <y>31</y>
-         <width>201</width>
+         <width>206</width>
          <height>451</height>
         </rect>
        </property>

@@ -465,6 +465,8 @@ class MW(QMainWindow, Ui_MainWindow):
         self.genPow2()
 
 
+        self.opt_checkBox.stateChanged.connect(self.specWid.setOpt)
+
         self.pow2ComboBox.currentIndexChanged.connect(self.pow2Changed)
 
         #self.measTool.setEnabled(False)
